@@ -1,5 +1,5 @@
 # ansible_lamp_stack
-### The playbook do following steps:</h3>
+### The playbook does following steps:</h3>
 
 * Install and configure apache(https)
 * Install and configure mariadb master
