@@ -1,0 +1,15 @@
+<virtualhost *:80>
+    servername new_server
+    redirect / https://{{ hostvars.roma.ansible_host }}
+</virtualhost>
+
+
+<virtualhost *:443>
+    servername {{ hostvars.roma.ansible_host }}
+    serveradmin root@{{ hostvars.roma.ansible_host }}
+    documentroot /var/www/html
+    directoryindex index.php index.html index.htm
+    sslengine on
+    sslcertificatefile /etc/httpd/ssl/lamp.crt
+    sslcertificatekeyfile /etc/httpd/ssl/lamp.key
+</virtualhost>

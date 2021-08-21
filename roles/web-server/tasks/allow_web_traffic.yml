@@ -1,0 +1,21 @@
+---
+# task allow_http_traffic for web-server role
+
+- name: allow http traffic out
+  firewalld:
+    zone: public
+    service: http
+    permanent: yes
+    state: enabled
+
+- name: allow https traffic out
+  firewalld:
+    zone: public
+    service: https
+    permanent: yes
+    state: enabled
+
+- name: reload firewall
+  service:
+    name: firewalld
+    state: reloaded

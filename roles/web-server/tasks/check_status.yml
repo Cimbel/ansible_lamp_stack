@@ -1,0 +1,18 @@
+---
+# tasks for role web-server 
+
+- name: check syntax status
+  shell: httpd -t
+  register: syntax_status
+
+- name: check service status
+  shell: systemctl status httpd
+  register: service_status
+
+- name: show syntax status
+  debug:
+    var: syntax_status.stderr_lines
+
+- name: show service status
+  debug:
+    var: service_status.stdout_lines

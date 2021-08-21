@@ -1,0 +1,9 @@
+---
+# main.yml for web-server
+
+- include: install.yml
+- include: copy_code.yml
+- include: allow_web_traffic.yml
+- include: allow_connect_db.yml
+- include: configure_https.yml
+- include: check_status.yml

@@ -1,0 +1,24 @@
+---
+# vars file for web-server
+dest_ssl_dir: "/etc/httpd/ssl"
+dest_ssl_key: "/etc/httpd/ssl/lamp.key"
+dest_ssl_cert: "/etc/httpd/ssl/lamp.crt"
+dest_index_file: "/var/www/html/index.php"
+dest_httpd_conf: "/etc/httpd/conf.d/my-website.conf"
+dest_index_del1: "/var/www/html/index.html"
+dest_index_del2: "/usr/share/httpd/noindex/index.html"
+packages:
+  - httpd
+  - yum-utils
+  - http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+  - policycoreutils-python
+  - mod_ssl
+php7_packages:
+  - php
+  - php-common
+  - php-opcache
+  - php-mcrypt
+  - php-cli
+  - php-gd
+  - php-curl
+  - php-mysqlnd

@@ -1,0 +1,19 @@
+---
+# tasks file for web-server
+
+- name: Install httpd, yum-utils and repo for php7
+  yum:
+    name: "{{ packages }}"
+    state: latest
+
+- name: Install php7
+  yum:
+    name: "{{ php7_packages }}"
+    enablerepo: remi-php73
+    state: present
+
+- name: Start and enable httpd
+  service:
+    name: httpd
+    state: started
+    enabled: yes

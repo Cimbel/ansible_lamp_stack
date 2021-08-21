@@ -1,0 +1,21 @@
+---
+# tasks file for role web-server
+
+- name: create directory for storing ssl creds
+  file:
+    path: "{{ dest_ssl_dir }}"
+    state: directory
+
+- name: generate ssl creds
+  shell: |
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout "{{ dest_ssl_key }}" \
+    -out "{{ dest_ssl_cert }}" \
+    -subj '/C=US/ST=New York/L=New York/O=IT/OU=HostingTeam/CN={{ hostvars.roma.ansible_host }}/emailAddress=test@mail.com'
+
+- name: template my-webstie.conf
+  template:
+    src: my-website.conf.j2
+    dest: "{{ dest_httpd_conf }}"
+  notify:
+    - restart httpd
